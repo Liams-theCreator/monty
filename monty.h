@@ -1,10 +1,9 @@
-#ifndef _MONTY_
-#define _MONTY_
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 
 /**
  * struct instruction_s - opcode and its function
