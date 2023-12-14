@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "tools.h"
+extern char *value;
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,4 +40,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+int check_cmd(char *buffer, unsigned int line, stack_t **head);
+void print(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t *head);
 #endif

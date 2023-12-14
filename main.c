@@ -1,13 +1,21 @@
 #include "monty.h"
 
-#define buffer_size 1024
+/**
+ * main - The main entry of the program.
+ *
+ * @ac: arrgument count.
+ * @av: arrgument vector.
+ *
+ * Return: zero on success and non zero in failure.
+ *
+ */
+
 int main(int ac, char **av)
 {
-	int fd = 0;
-	int read_bytes = 0;
-	int len = 0;
+	int fd = 0, read_bytes = 0, len = 0;
+	unsigned int line = 0;
 	char *buffer = NULL;
-	char bu[10];
+	stack_t *head = NULL;
 
 	if (ac != 2)
 	{
@@ -22,29 +30,13 @@ int main(int ac, char **av)
 		_putchar('\n', 2);
 		exit(EXIT_FAILURE);
 	}
-	if ((read_bytes = _getline(&buffer, &len, fd)) != -1)
+	while ((read_bytes = _getline(&buffer, &len, fd, &line)) != -1)
 	{
-		printf("%s", buffer);
+		check_cmd(buffer, line, &head);
 	}
-	
-	read(fd, bu, 7);
-	printf("%s", bu);
-	if (read_bytes == -1)
-	{
+	if (buffer)
 		free(buffer);
-		_puts("Error Reading from file hhh", 2);
-		exit(1);
-	}
-
-	free(buffer);
+	free_stack(head);
 	close(fd);
 	return (0);
 }
-
-
-
-	// while (bytes_read = read(fd, buffer, buffer_size - 1) > 0)
-	// {
-	// 	buffer[bytes_read] = '\0';
-		
-	// }
