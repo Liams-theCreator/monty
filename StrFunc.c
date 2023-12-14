@@ -38,17 +38,18 @@ void pchara(stack_t **stack, unsigned int line_number)
 void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
-	int babahmad;
 	(void)line_number;
 
-	while (current != NULL && current->n != 0 &&
-				 (current->n >= 0 && current->n <= 127))
+	if (!current)
 	{
-		babahmad = current->n;
-		if (babahmad >= 0 && babahmad <= 127)
-		{
-			_putchar(babahmad, 1);
-		}
+		_putchar('\n', 1);
+		return;
+	}
+	while (current)
+	{
+		if (current->n <= 0 || current->n > 127)
+			break;
+		_putchar(current->n, 1);
 		current = current->next;
 	}
 	_putchar('\n', 1);

@@ -1,56 +1,5 @@
-#include "monty.h"
-/**
- * swap - swaps the top two elements of the stack.
- *
- * @stack: pointer to pointer to the first node.
- * @line_number: line number.
- *
- */
-void swap(stack_t **stack, unsigned int line_number)
-{
-	int temborary;
+#include "tools.h"
 
-	if (!(*stack) || !(*stack)->next)
-	{
-		_putchar('L', 2);
-		print_number(line_number, 2);
-		_puts(": can't swap, stack too short\n", 2);
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
-	temborary = (*stack)->n;
-	(*stack)->n = (*stack)->next->n;
-	(*stack)->next->n = temborary;
-}
-/**
- * pop - remove the top element of the stack.
- *
- * @stack: pointer to pointer to the first node.
- * @line_number: line number.
- *
- */
-void pop(stack_t **stack, unsigned int line_number)
-{
-	stack_t *temp = NULL;
-
-	if (!(*stack))
-	{
-		_putchar('L', 2);
-		print_number(line_number, 2);
-		_puts(": can't pop an empty stack\n", 2);
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
-
-	temp = *stack;
-	*stack = (*stack)->next;
-
-	if (*stack)
-	{
-		(*stack)->prev = NULL;
-	}
-	free(temp);
-}
 /**
  * _getline - Read from a file descriptor.
  *

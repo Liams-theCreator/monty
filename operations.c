@@ -7,6 +7,9 @@
  */
 void add(stack_t **stack, unsigned int line_number)
 {
+	int add_value = 0;
+	stack_t *tmp = NULL;
+
 	if (!(*stack) || !(*stack)->next)
 	{
 		_putchar('L', 2);
@@ -15,10 +18,12 @@ void add(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	(*stack)->next->n += (*stack)->n;
+	add_value = (*stack)->n + (*stack)->next->n;
+	tmp = (*stack)->next;
 	free(*stack);
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
+	*stack = tmp;
+	(*stack)->n = add_value;
+
 }
 /**
  * _div - Div the top two elements of the stack.
@@ -28,6 +33,9 @@ void add(stack_t **stack, unsigned int line_number)
  */
 void _div(stack_t **stack, unsigned int line_number)
 {
+	int div_value = 0;
+	stack_t *tmp = NULL;
+
 	if (!(*stack) || !(*stack)->next)
 	{
 		_putchar('L', 2);
@@ -44,10 +52,11 @@ void _div(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	(*stack)->next->n /= (*stack)->n;
+	div_value = (*stack)->next->n / (*stack)->n;
+	tmp = (*stack)->next;
 	free(*stack);
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
+	*stack = tmp;
+	(*stack)->n = div_value;
 }
 /**
  * sub - Sub the top two elements of the stack.
@@ -57,6 +66,9 @@ void _div(stack_t **stack, unsigned int line_number)
  */
 void sub(stack_t **stack, unsigned int line_number)
 {
+	int sub_value = 0;
+	stack_t *tmp = NULL;
+
 	if (!(*stack) || !(*stack)->next)
 	{
 		_putchar('L', 2);
@@ -65,20 +77,24 @@ void sub(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	(*stack)->next->n -= (*stack)->n;
+	sub_value = (*stack)->next->n - (*stack)->n;
+	tmp = (*stack)->next;
 	free(*stack);
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
+	*stack = tmp;
+	(*stack)->n = sub_value;
 }
 /**
- * mul - Mul the top two elements of the stack.
+ * _mul - Mul the top two elements of the stack.
  *
  * @stack: A pointer to the pointer to the first node of the stack.
  * @line_number: The line number in the Monty bytecode file.
  */
 
-void mul(stack_t **stack, unsigned int line_number)
+void _mul(stack_t **stack, unsigned int line_number)
 {
+	int mul_value = 0;
+	stack_t *tmp = NULL;
+
 	if (!(*stack) || !(*stack)->next)
 	{
 		_putchar('L', 2);
@@ -87,10 +103,11 @@ void mul(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	(*stack)->next->n *= (*stack)->n;
+	mul_value = (*stack)->next->n * (*stack)->n;
+	tmp = (*stack)->next;
 	free(*stack);
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
+	*stack = tmp;
+	(*stack)->n = mul_value;
 }
 /**
  * mod - Mod the top two elements of the stack.
@@ -101,6 +118,9 @@ void mul(stack_t **stack, unsigned int line_number)
 
 void mod(stack_t **stack, unsigned int line_number)
 {
+	int mod_value = 0;
+	stack_t *tmp = NULL;
+
 	if (!(*stack) || !(*stack)->next)
 	{
 		_putchar('L', 2);
@@ -117,8 +137,9 @@ void mod(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	(*stack)->next->n %= (*stack)->n;
+	mod_value = (*stack)->next->n % (*stack)->n;
+	tmp = (*stack)->next;
 	free(*stack);
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
+	*stack = tmp;
+	(*stack)->n = mod_value;
 }

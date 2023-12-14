@@ -13,7 +13,7 @@ int is_buffer_valid(char *buffer)
 
 	if (buffer[0] == '\n' || buffer[0] == '#')
 		return (-1);
-	while (buffer[i]) /**/
+	while (buffer[i])/**/
 	{
 		if (buffer[i] != 32 && buffer[i] != 9 && buffer[i] != '\n')
 		{
