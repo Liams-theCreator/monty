@@ -44,4 +44,5 @@ int check_cmd(char *buffer, unsigned int line, stack_t **head);
 void print(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
+void print_top(stack_t **stack, unsigned int line_number);
 #endif

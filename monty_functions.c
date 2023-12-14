@@ -85,7 +85,8 @@ void push(stack_t **stack, unsigned int line_number)
 int check_cmd(char *buffer, unsigned int line, stack_t **head)
 {
 	char *cmd = NULL;
-	instruction_t list[] = {{"push", push}, {"pall", print}, {NULL, NULL}};
+	instruction_t list[] = {{"push", push}, {"pall", print}, 
+	{"pint", print_top}, {NULL, NULL}};
 	int i = 0;
 
 	cmd = strtok(buffer, " \t\n");
