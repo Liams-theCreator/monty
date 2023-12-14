@@ -42,7 +42,7 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node = NULL;
 
-	if (!value)
+	if (value == NULL || _kiki(value) == -1)
 	{
 		_puts("L", 2);
 		print_number(line_number, 2);

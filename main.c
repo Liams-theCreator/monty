@@ -1,4 +1,5 @@
 #include "monty.h"
+#include "tools.h"
 
 /**
  * main - The main entry of the program.
@@ -12,7 +13,7 @@
 
 int main(int ac, char **av)
 {
-	int fd = 0, read_bytes = 0, len = 0;
+	int fd = 0, read_bytes = 0, len = 0, valid = 0;
 	unsigned int line = 0;
 	char *buffer = NULL;
 	stack_t *head = NULL;
@@ -32,6 +33,9 @@ int main(int ac, char **av)
 	}
 	while ((read_bytes = _getline(&buffer, &len, fd, &line)) != -1)
 	{
+		valid = is_buffer_valid(buffer);
+		if (valid == -1)
+			continue;
 		check_cmd(buffer, line, &head);
 	}
 	if (buffer)

@@ -62,10 +62,15 @@ int _kiki(char *va)
 		return (-1);
 	while (va[i])
 	{
-		if (va[i] <= 48 || va[i] >= 57)
+		if (va[i] < 48 || va[i] > 57)
+		{
+			if (va[i] == '-' && (va[i + 1] >= 48 && va[i + 1] <= 57))
+				return (1);
 			return (-1);
+		}
 		i++;
 	}
+
 	return (1);
 }
 /**
