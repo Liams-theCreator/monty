@@ -96,10 +96,12 @@ int check_cmd(char *buffer, unsigned int line, stack_t **head)
 	int i = 0;
 
 	cmd = strtok(buffer, " \t\n\r");
+	if (strcmp(cmd, "nop") == 0 || strcmp(cmd, "stack") == 0)
+		return (0);
+	else if (strcmp(cmd, "queue") == 0)
+		return (0);
 	for (i = 0; list[i].opcode; i++)
-	{
-		if (strcmp(cmd, "nop") == 0)
-			return (0);
+	{	
 		if (strcmp(list[i].opcode, cmd) == 0)
 		{
 			value = strtok(NULL, " \t\n\r");
@@ -107,15 +109,10 @@ int check_cmd(char *buffer, unsigned int line, stack_t **head)
 			return (0);
 		}
 	}
-	_puts("L", 2);
-	_putchar(line + 48, 2);
+	_puts("L", 2), _putchar(line + 48, 2);
 	_puts(": unknown instruction ", 2);
-	_puts(cmd, 2);
-	_putchar('\n', 2);
-	free_stack(*head);
-
-	exit(EXIT_FAILURE);
-
+	_puts(cmd, 2), _putchar('\n', 2);
+	free_stack(*head), exit(EXIT_FAILURE);
 	return (0);
 }
 
