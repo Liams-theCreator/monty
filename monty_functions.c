@@ -101,7 +101,7 @@ int check_cmd(char *buffer, unsigned int line, stack_t **head)
 	else if (strcmp(cmd, "queue") == 0)
 		return (0);
 	for (i = 0; list[i].opcode; i++)
-	{	
+	{
 		if (strcmp(list[i].opcode, cmd) == 0)
 		{
 			value = strtok(NULL, " \t\n\r");
