@@ -10,7 +10,6 @@ char *value = NULL;
  *
  *
  */
-
 void print(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = NULL;
@@ -27,7 +26,6 @@ void print(stack_t **stack, unsigned int line_number)
 		}
 	}
 }
-
 
 /**
  * push - add elements on the stack.
@@ -86,12 +84,18 @@ int check_cmd(char *buffer, unsigned int line, stack_t **head)
 {
 	char *cmd = NULL;
 	instruction_t list[] = {{"push", push}, {"pall", print},
-	{"pint", print_top}, {NULL, NULL}};
+		{"pint", print_top}, {"pop", pop},
+		{"swap", swap}, {"add", add},
+		{"sub", sub}, {"div", _div}, {"mul", mul},
+		{"mod", mod}, {"pchar", pchara}, {"pstr", pstr},
+		{NULL, NULL}};
 	int i = 0;
 
 	cmd = strtok(buffer, " \t\n");
 	for (i = 0; list[i].opcode; i++)
 	{
+		if (strcmp(cmd, "nop") == 0)
+			return (0);
 		if (strcmp(list[i].opcode, cmd) == 0)
 		{
 			value = strtok(NULL, " \t\n");

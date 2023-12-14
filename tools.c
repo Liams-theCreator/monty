@@ -86,10 +86,8 @@ void print_number(int n, int fd)
 	{
 		n = -n;
 		_putchar('-', fd);
-
 	}
 	if (n / 10)
 		print_number(n / 10, fd);
 	_putchar((n % 10) + 48, fd);
 }
-
